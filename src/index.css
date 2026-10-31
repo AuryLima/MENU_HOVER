@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  padding-top: 80px;
+}
+
+/* CONTAINER DOS BOTÕES */
+.menu-container {
+  display: flex;
+  gap: 15px;
+}
+
+/* ESTILO DO BOTÃO BASE */
+.nav-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  fontSize: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative; /* Necessário para posicionar a barra na base */
+  overflow: hidden;   /* Garante que a linha não saia do limite arredondado do botão */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* A BARRA DE PROGRESSO (SUBLINHADO OOCULTO) */
+.nav-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* Espessura da barra de progresso */
+  background-color: #00ff11; /* Cor da barra de progresso */
+  transform: scaleX(0); /* Começa invisível (tamanho zero horizontalmente) */
+  transform-origin: left; /* Faz a animação correr da esquerda para a direita */
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* Transição suave de progresso */
+}
+
+/* EFEITOS QUANDO O MOUSE PASSA (HOVER) */
+.nav-button:hover {
+  background-color: #0056b3; 
+  transform: translateY(-2px);
+}
+
+/* ATIVA A BARRA DE PROGRESSO NO HOVER */
+.nav-button:hover::after {
+  transform: scaleX(1); /* Expande a barra até 100% da largura do botão */
+}
